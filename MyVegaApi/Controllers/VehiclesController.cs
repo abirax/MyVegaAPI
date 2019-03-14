@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace MyVegaApi.Controllers
 {
+    
     [Route("/api/vehicles")]
     public class VehiclesController : Controller
     {
@@ -76,7 +77,12 @@ namespace MyVegaApi.Controllers
 
             return Ok(id);
         }
+        //[HttpGet("api/makes")]
+        //public async Task<IActionResult> GetMake()
+        //{
+        //    return repository.VegaDbContext
 
+        //}
         //[HttpGet]
         //public async Task<IActionResult> GetVehicles()
         //{
