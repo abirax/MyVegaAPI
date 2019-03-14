@@ -17,9 +17,12 @@ namespace MyVegaApi.Mapping
             CreateMap<Feature, KeyValuePairResource>();
             CreateMap<Vehicle, SaveVehicleResource>()
               .ForMember(vr => vr.Contact, opt => opt.MapFrom(v => new ContactResource { Name = v.ContactName, Email = v.ContactEmail, Address = v.ContactAddress }))
+              .ForMember(vr=> vr.Id,opt=> opt.MapFrom(v=>v.VehicleID))
               .ForMember(vr => vr.Features, opt => opt.MapFrom(v => v.Features.Select(vf => vf.FeatureID)));
+
             CreateMap<Vehicle, VehicleResource>()
               .ForMember(vr => vr.Make, opt => opt.MapFrom(v => v.Model.Make))
+               .ForMember(vr => vr.Id, opt => opt.MapFrom(v => v.VehicleID))
               .ForMember(vr => vr.Contact, opt => opt.MapFrom(v => new ContactResource { Name = v.ContactName, Email = v.ContactEmail, Address = v.ContactAddress }))
               .ForMember(vr => vr.Features, opt => opt.MapFrom(v => v.Features.Select(vf => new KeyValuePairResource { Id = vf.Feature.Id, Name = vf.Feature.Name })));
 

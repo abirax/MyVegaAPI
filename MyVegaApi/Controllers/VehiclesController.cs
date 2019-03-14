@@ -37,7 +37,7 @@ namespace MyVegaApi.Controllers
             repository.CreateVehicle(vehicle); 
             await unitOfWork.CompleteAsync();
 
-            var result = mapper.Map<Vehicle, VehicleResource>(vehicle);
+            var result = mapper.Map<Vehicle, SaveVehicleResource>(vehicle);
 
             return Ok(result);
         }
@@ -96,7 +96,7 @@ namespace MyVegaApi.Controllers
             var vehicle = await repository.GetVehicle(id);
 
             if (vehicle == null)
-                return NotFound();
+                return NotFound(" Vehicle with ID does not exist");
 
             var vehicleResource = mapper.Map<Vehicle, VehicleResource>(vehicle);
 
